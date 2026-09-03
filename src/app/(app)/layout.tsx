@@ -9,6 +9,7 @@
 
 import './globals.css'
 import type { Metadata } from 'next'
+import { getSiteSettings } from '@/lib/payload'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { SiteHeader, SiteFooter } from '@/components'
 
@@ -28,7 +29,9 @@ export const metadata: Metadata = {
     viewport: null
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const siteSettings = await getSiteSettings()
+
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
     <head>
@@ -54,13 +57,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <meta name="twitter:image" content="" />
     </head>
       <body className="index-page">
-      <SiteHeader />
+      <SiteHeader
+          siteName={siteSettings.siteName}
+          navItems={siteSettings.navItems}
+          socialLinks={siteSettings.socialLinks}
+          profileImageUrl={siteSettings.profileImage?.url ?? '/studio-ghibli.png'}
+      />
 
       <main className={'main'}>
           {children}
       </main>
 
-      <SiteFooter />
+      <SiteFooter copyrightName={siteSettings.footerCopyrightName} />
       </body>
     </html>
   );
