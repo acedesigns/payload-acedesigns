@@ -87,8 +87,14 @@ export interface Config {
     defaultIDType: string;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'landing-page': LandingPage;
+    'site-settings': SiteSetting;
+  };
+  globalsSelect: {
+    'landing-page': LandingPageSelect<false> | LandingPageSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -314,6 +320,312 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing-page".
+ */
+export interface LandingPage {
+  id: string;
+  hero: {
+    heroImage?: (string | null) | Media;
+    heading: string;
+    typedStrings?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  about: {
+    heading: string;
+    introParagraphs?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    subheading: string;
+    tagline: string;
+    infoList?:
+      | {
+          label: string;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    closingParagraph: string;
+  };
+  stats?: {
+    items?:
+      | {
+          /**
+           * Bootstrap Icons class name, e.g. bi-emoji-smile
+           */
+          icon: string;
+          value: number;
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  skills: {
+    heading: string;
+    subheading: string;
+    items?:
+      | {
+          name: string;
+          percent: number;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  resume: {
+    heading: string;
+    intro: string;
+    summary: {
+      title: string;
+      body: string;
+      location: string;
+      email: string;
+    };
+    experience?:
+      | {
+          role: string;
+          company: string;
+          dateRange: string;
+          location: string;
+          bullets?:
+            | {
+                text: string;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  services: {
+    heading: string;
+    items?:
+      | {
+          /**
+           * Bootstrap Icons class name, e.g. bi-emoji-smile
+           */
+          icon: string;
+          title: string;
+          description: string;
+          link?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  contact: {
+    heading: string;
+    infoItems?:
+      | {
+          /**
+           * Bootstrap Icons class name, e.g. bi-emoji-smile
+           */
+          icon: string;
+          title: string;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    mapEmbedUrl?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: string;
+  siteName: string;
+  profileImage?: (string | null) | Media;
+  navItems?:
+    | {
+        href: string;
+        /**
+         * Bootstrap Icons class name, e.g. bi-house
+         */
+        icon: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  socialLinks?:
+    | {
+        /**
+         * Theme's hover-color CSS class, e.g. twitter, facebook, instagram, google-plus, linkedin
+         */
+        platform: string;
+        href: string;
+        /**
+         * Bootstrap Icons class name, e.g. bi-linkedin
+         */
+        icon: string;
+        id?: string | null;
+      }[]
+    | null;
+  footerCopyrightName: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing-page_select".
+ */
+export interface LandingPageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        heroImage?: T;
+        heading?: T;
+        typedStrings?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  about?:
+    | T
+    | {
+        heading?: T;
+        introParagraphs?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        subheading?: T;
+        tagline?: T;
+        infoList?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              id?: T;
+            };
+        closingParagraph?: T;
+      };
+  stats?:
+    | T
+    | {
+        items?:
+          | T
+          | {
+              icon?: T;
+              value?: T;
+              label?: T;
+              id?: T;
+            };
+      };
+  skills?:
+    | T
+    | {
+        heading?: T;
+        subheading?: T;
+        items?:
+          | T
+          | {
+              name?: T;
+              percent?: T;
+              id?: T;
+            };
+      };
+  resume?:
+    | T
+    | {
+        heading?: T;
+        intro?: T;
+        summary?:
+          | T
+          | {
+              title?: T;
+              body?: T;
+              location?: T;
+              email?: T;
+            };
+        experience?:
+          | T
+          | {
+              role?: T;
+              company?: T;
+              dateRange?: T;
+              location?: T;
+              bullets?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+      };
+  services?:
+    | T
+    | {
+        heading?: T;
+        items?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              description?: T;
+              link?: T;
+              id?: T;
+            };
+      };
+  contact?:
+    | T
+    | {
+        heading?: T;
+        infoItems?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              value?: T;
+              id?: T;
+            };
+        mapEmbedUrl?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  siteName?: T;
+  profileImage?: T;
+  navItems?:
+    | T
+    | {
+        href?: T;
+        icon?: T;
+        label?: T;
+        id?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        href?: T;
+        icon?: T;
+        id?: T;
+      };
+  footerCopyrightName?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

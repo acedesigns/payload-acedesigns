@@ -10,4 +10,5 @@
 export { useAOS } from './useAOS'
 export { useCountUp } from './useCountUp'
 export { useTypedText } from './useTypedText'
+export { usePreloader } from './usePreloader'
 export { useSkillsReveal } from './useSkillsReveal'
