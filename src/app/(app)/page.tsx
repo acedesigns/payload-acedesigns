@@ -51,9 +51,9 @@ export default function Home() {
               className=""
           />
           <div className="container" data-aos="fade-up" data-aos-delay={100}>
-            <h2>Anele 'ace' M</h2>
+            <h2>Anele &apos;ace&apos; M</h2>
             <p>
-              I'm {" "}
+              I&apos;m {" "}
               <span className="typed" ref={typedRef}>
                             A Developer
                         </span>
@@ -138,7 +138,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="py-3">
-                  Hi, I'm Anele — a Systems and Web Developer passionate about
+                  Hi, I&apos;m Anele — a Systems and Web Developer passionate about
                   creating beautiful, functional, and user-focused platforms. I
                   specialize in building professional, accessible, and
                   standards-compliant web-based systems using modern technologies
