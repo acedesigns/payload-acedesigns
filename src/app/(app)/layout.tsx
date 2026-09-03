@@ -1,7 +1,16 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { SiteHeader, SiteFooter } from "@/components";
+/* =======================================================
+ *
+ * Created by anele on 03/09/2026.
+ *
+ * @anele_ace
+ *
+ * =======================================================
+ */
+
+import './globals.css'
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+import { SiteHeader, SiteFooter } from '@/components'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
