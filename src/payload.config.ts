@@ -16,6 +16,8 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { LandingPage } from './globals/LandingPage'
+import { SiteSettings } from './globals/SiteSettings'
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -28,6 +30,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media],
+  globals: [LandingPage, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
