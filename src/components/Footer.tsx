@@ -8,10 +8,16 @@
  * =======================================================
  */
 
-
+import { usePreloader } from '@/hooks'
 import { useEffect, useState } from 'react'
 
-export function SiteFooter() {
+interface SiteFooterProps {
+    copyrightName: string
+}
+
+export function SiteFooter({ copyrightName }: SiteFooterProps) {
+
+    const isLoading: boolean = usePreloader()
 
     const [isScrollTopVisible, setIsScrollTopVisible] = useState(false)
 
@@ -32,7 +38,7 @@ export function SiteFooter() {
                     <div className="copyright text-center ">
                         <p>
                             © <span>Copyright</span>{" "}
-                            <strong className="px-1 sitename">aceDesigns</strong>{" "}
+                            <strong className="px-1 sitename">{copyrightName}</strong>{" "}
                             <span>All Rights Reserved</span>
                         </p>
                     </div>
@@ -49,7 +55,7 @@ export function SiteFooter() {
                 <i className="bi bi-arrow-up-short" />
             </a>
             {/* Preloader */}
-            {/*<div id="preloader" />*/}
+            {isLoading && <div id="preloader" />}
         </>
     )
 }
